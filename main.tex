@@ -1,0 +1,105 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\documentclass{article}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+
+\title{My Solutions to Mathematical tripos, Part IA Probability}
+\author{Lucy}
+\date{May 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Question 1}
+
+Four mice are chosen (without replacement) from a litter, two of which are white. The probability that both white mice are chosen is twice the probability that neither is chosen. How many mice are there in the litter?
+
+Solution: 
+
+$ { n - 2 \choose 2} / {n \choose 4} = 2 ( {n - 2 \choose 4 }/ {n \choose 4}) $
+
+$n = 7$
+
+Related topic: sampling from an unknown sample size
+
+\section{Question 2}
+
+A table-tennis championship for $2^n$ players is organized as a knock-out tournament with n rounds,
+the last round being the final. Two players are chosen at random. Calculate the probability that they
+meet: (a) in the first round, (b) in the final, (c) in any round.
+
+Solution: 
+(a) $ \frac{1}{2^n - 1} $
+
+(b) For the two players to meet at the final round, there must be two requirements: 1. They do not meet in the rounds prior to the final. round. 2. Both of them are able to reach the final round.
+
+To satisfy requirement 1. fixing one player, the other player must  be the nodes marked in PINK. The probability that out of all other players, one of the pink player is chosen is $ \frac{2^{n-1}}{2^n - 1} $
+
+To satisfy requirement 2, we need both players to advance to the final round. The probability of this happening is $ \frac{1}{2^{n-1}} $
+
+Solution: $ \frac{2^{n-1}}{2^n - 1} \frac{1}{2^{n-1}}\frac{1}{2^{n-1}} = \frac{1}{(2^{n-1})(2^n - 1)} $
+
+\includegraphics[width=15cm, height=6cm]{pic_3.jpg}
+
+(c) We split the child nodes into pairs that share a common parent. Now, imagine 2 child nodes traversing up the tree as players progressing in the match. We choose the two child nodes order for the them to meet at the k-th match. Taking one child node as given, there is a chance of $\frac{2^{k-1}}{2^n - 1}$ that the other child node and meet the already chosen child node at the round k, conditioned upon the fact that they make it through all rounds thus far. Additionally, the probability they make it through all rounds thus far is $\frac{1}{2}^{2k-2}$. 
+
+Solution: $\sum_{k=1}^{n} \frac{1}{2}^{2k-2}\frac{2^{k-1}}{2^n - 1} = \frac{1}{2^{n - 1}}$
+
+
+\section{Question 3}
+
+A full deck of 52 cards is divided in half at random. Find an expression for the probability that each half contains the same number of red and black cards. Evaluate this expression as a decimal expansion. Use Stirling’s formula to find an approximation for the same probability and evaluate this approximation as a decimal expansion.
+
+There are $ { 52 \choose 26 } $ ways of dividing the cards in half. $ { 26 \choose 13 }{ 26 \choose 13 } $ ways divide such that each half contains the same number of red and black cards. 
+
+Solution: $ \frac{26!^4}{52!(13!)^4}$ which is approx. 0.22
+
+\section{Question 8}
+
+Examination candidates are graded into four classes known conventionally as I, II-1, II-2 and III,
+with probabilities 1/8, 2/8, 3/8 and 2/8 respectively. Candidates who misread the rubric, a common
+event with probability 2/3, generally do worse, their probabilities being 1/10, 2/10, 4/10 and 3/10.
+What is the probability:
+(a) that a candidate who reads the rubric correctly is placed in the class II-1?
+(b) that a candidate who is placed in the class II-1 has read the rubric correctly?
+
+Solution: (a) $ \frac{ 7}{ 20 } $ (b) $ \frac{ 7}{ 15 } $ 
+\section{Question 10}
+
+The Polya urn model is as follows. We start with an urn which contains one white ball and one black ball. At each second we choose a ball at random from the urn and replace it together with one more ball of the same colour. Calculate the probability that when n balls are in the urn, i of them are white.
+
+
+
+
+\section{Aside: Sterling's Formula}
+
+The sterling's formula states that $ln(N!)$ can be approximated by $Nln(N) + N$
+
+\section{Buffon's Needle}
+
+There are parallel lines on a plane. The distance between each pair of adjacent parallel lines is $d$ . We throw a needle of length $l$ onto the plane, calculate the probability that it intersects with any line. 
+
+We make the observation that if the needle intersects with any one line, it will have one end that is above the line and one end below the end. Hence, $0.5l\sin(\theta) < d$ must be satisfied. 
+
+\section{Calculating MGF}
+
+
+\section{The Convolution Formula}
+
+Let $X$ and $Y$ be independent continuous random variables. The convolution formula is expressed as: 
+$$(f \ast g)(t):=\int_{-\infty}^{\infty} f(\tau) g(t-\tau) d \tau$$
+
+For example, to calculate the density of the sum of two independent random variables
+
+
+
+
+
+
+\end{document}
+
+
+
+
