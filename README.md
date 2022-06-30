@@ -1,2 +1,2 @@
 # PartIA_Probability
-Solution to Cambridge Maths Part IA Probability Questions
+My solutions to Cambridge Maths Part IA Probability Questions
